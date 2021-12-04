@@ -498,21 +498,23 @@ export function formatLabelString(str: string, params: Record<string, any>) {
   try {
     str = str.replace(/\$\{(.*?)\}/gi, function (_, $1: string) {
       const [key, operator, ...args] = $1.split('|').map(el => el.trim()).filter(Boolean);
-      const val = String(params[key]);
+      const value = String(params[key]);
 
       if (operator === 'padRight') {
         return formatTreeText(
-          val,
+          value,
           args.length > 0 ? parseInt(args[0]) : undefined
         );
+      } else if(operator === 'eval') {
+        return eval(args[0]);
       } else if (operator) {
-        const fn = val[operator as any] as unknown;
+        const fn = value[operator as any] as unknown;
         if (typeof fn === 'function') {
-          return fn.apply(val, args) as string;
+          return fn.apply(value, args) as string;
         }
         throw new Error(`${operator} 不是字符串的方法`);
       } else {
-        return val;
+        return value;
       }
     });
   } catch (err) {
