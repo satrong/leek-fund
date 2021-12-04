@@ -18,10 +18,10 @@ const formatNum = (n: number) => {
 export const objectToQueryString = (queryParameters: Object): string => {
   return queryParameters
     ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
-        const symbol = queryString.length === 0 ? '?' : '&';
-        queryString += typeof val !== 'object' ? `${symbol}${key}=${val}` : '';
-        return queryString;
-      }, '')
+      const symbol = queryString.length === 0 ? '?' : '&';
+      queryString += typeof val !== 'object' ? `${symbol}${key}=${val}` : '';
+      return queryString;
+    }, '')
     : '';
 };
 
@@ -349,7 +349,7 @@ export function allMarkets(): Array<string> {
       market = StockCategory.US;
     } else if (/^(cnf_)/.test(item)) {
       market = StockCategory.Future;
-    } 
+    }
     if (!result.includes(market)) {
       result.push(market);
     }
@@ -492,16 +492,23 @@ export const events = new EventEmitter();
 
 export function formatLabelString(str: string, params: Record<string, any>) {
   try {
-    str = str.replace(/\$\{(.*?)\}/gi, function (_, $1) {
-      const formatMatch = /(.*?)\s*\|\s*padRight\s*(\|\s*(\d+))?/gi.exec($1);
+    str = str.replace(/\$\{(.*?)\}/gi, function (_, $1: string) {
+      const [key, operator, ...args] = $1.split('|').map(el => el.trim()).filter(Boolean);
+      const val = String(params[key]);
 
-      if (formatMatch) {
+      if (operator === 'padRight') {
         return formatTreeText(
-          params[formatMatch[1]],
-          formatMatch[3] ? parseInt(formatMatch[3]) : undefined
+          val,
+          args.length > 0 ? parseInt(args[0]) : undefined
         );
+      } else if (operator) {
+        const fn = val[operator as any] as unknown;
+        if (typeof fn === 'function') {
+          return fn.apply(val, args) as string;
+        }
+        throw new Error(`${operator} 不是字符串的方法`);
       } else {
-        return String(params[$1]);
+        return val;
       }
     });
   } catch (err) {
