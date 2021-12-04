@@ -138,9 +138,10 @@ export class StatusBar {
       ? ''
       : `「今日行情」${type}${symbol}\n涨跌：${updown}   百分：${percent}%\n最高：${high}   最低：${low}\n今开：${open}   昨收：${yestclose}`;
 
-    if (!this.statusBarFollowThemeColor) {
-      stockBarItem.color = deLow ? this.riseColor : this.fallColor;
-    }
+    stockBarItem.color = this.statusBarFollowThemeColor
+      ? undefined
+      : (deLow ? this.riseColor : this.fallColor);
+
     stockBarItem.command = {
       title: 'Change stock',
       command: 'leek-fund.changeStatusBarItem',
@@ -158,10 +159,7 @@ export class StatusBar {
       return;
     }
 
-    this.fundBarItem.text = `🐥$(pulse)`;
-    if (!this.statusBarFollowThemeColor) {
-      this.fundBarItem.color = this.riseColor;
-    }
+    this.fundBarItem.color = this.statusBarFollowThemeColor ? undefined : this.riseColor;
 
     this.fundBarItem.tooltip = this.statusBarHideTooltip
       ? ''
