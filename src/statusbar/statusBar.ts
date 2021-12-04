@@ -33,6 +33,11 @@ export class StatusBar {
     return LeekFundConfig.getConfig('leek-fund.fallColor');
   }
 
+  /** 状态栏文本颜色是否跟随主题色，如果是，会忽略 riseColor 和 fallColor 的配置 */
+  get statusBarFollowThemeColor(): boolean {
+    return LeekFundConfig.getConfig('leek-fund.statusBarFollowThemeColor');
+  }
+
   /** 隐藏股市状态栏 */
   get hideStatusBarStock(): boolean {
     return LeekFundConfig.getConfig('leek-fund.hideStatusBarStock');
@@ -126,7 +131,9 @@ export class StatusBar {
     });
 
     stockBarItem.tooltip = `「今日行情」${type}${symbol}\n涨跌：${updown}   百分：${percent}%\n最高：${high}   最低：${low}\n今开：${open}   昨收：${yestclose}`;
-    stockBarItem.color = deLow ? this.riseColor : this.fallColor;
+    if (!this.statusBarFollowThemeColor) {
+      stockBarItem.color = deLow ? this.riseColor : this.fallColor;
+    }
     stockBarItem.command = {
       title: 'Change stock',
       command: 'leek-fund.changeStatusBarItem',
@@ -145,7 +152,9 @@ export class StatusBar {
     }
 
     this.fundBarItem.text = `🐥$(pulse)`;
-    this.fundBarItem.color = this.riseColor;
+    if (!this.statusBarFollowThemeColor) {
+      this.fundBarItem.color = this.riseColor;
+    }
     this.fundBarItem.tooltip = this.getFundTooltipText();
     this.fundBarItem.show();
     return this.fundBarItem;
@@ -154,11 +163,9 @@ export class StatusBar {
   private getFundTooltipText() {
     let fundTemplate = '';
     for (let fund of this.fundService.fundList.slice(0, 14)) {
-      fundTemplate += `${
-        fund.info.percent.indexOf('-') === 0 ? ' ↓ ' : fund.info.percent === '0.00' ? '' : ' ↑ '
-      } ${fund.info.percent}%   「${
-        fund.info.name
-      }」\n--------------------------------------------\n`;
+      fundTemplate += `${fund.info.percent.indexOf('-') === 0 ? ' ↓ ' : fund.info.percent === '0.00' ? '' : ' ↑ '
+        } ${fund.info.percent}%   「${fund.info.name
+        }」\n--------------------------------------------\n`;
     }
     // tooltip 有限定高度，所以只展示最多14只基金
     const tips = this.fundService.fundList.length >= 14 ? '（只展示前14只）' : '';
