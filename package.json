@@ -583,6 +583,16 @@
           "default": "#C9AD06",
           "description": "股票跌的颜色"
         },
+        "leek-fund.statusBarFollowThemeColor": {
+          "type": "boolean",
+          "default": false,
+          "description": "状态栏文本颜色是否跟随主题色，如果是，会忽略 `riseColor` 和 `fallColor` 的配置"
+        },
+        "leek-fund.statusBarHideTooltip": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否隐藏状态栏的气泡提示框"
+        },
         "leek-fund.hideFundBarItem": {
           "type": "boolean",
           "default": false,

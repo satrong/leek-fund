@@ -38,6 +38,10 @@ export class StatusBar {
     return LeekFundConfig.getConfig('leek-fund.statusBarFollowThemeColor');
   }
 
+  get statusBarHideTooltip(): boolean {
+    return LeekFundConfig.getConfig('leek-fund.statusBarHideTooltip');
+  }
+
   /** 隐藏股市状态栏 */
   get hideStatusBarStock(): boolean {
     return LeekFundConfig.getConfig('leek-fund.hideStatusBarStock');
@@ -130,7 +134,10 @@ export class StatusBar {
       icon: deLow ? '📈' : '📉',
     });
 
-    stockBarItem.tooltip = `「今日行情」${type}${symbol}\n涨跌：${updown}   百分：${percent}%\n最高：${high}   最低：${low}\n今开：${open}   昨收：${yestclose}`;
+    stockBarItem.tooltip = this.statusBarHideTooltip
+      ? ''
+      : `「今日行情」${type}${symbol}\n涨跌：${updown}   百分：${percent}%\n最高：${high}   最低：${low}\n今开：${open}   昨收：${yestclose}`;
+
     if (!this.statusBarFollowThemeColor) {
       stockBarItem.color = deLow ? this.riseColor : this.fallColor;
     }
@@ -155,7 +162,10 @@ export class StatusBar {
     if (!this.statusBarFollowThemeColor) {
       this.fundBarItem.color = this.riseColor;
     }
-    this.fundBarItem.tooltip = this.getFundTooltipText();
+
+    this.fundBarItem.tooltip = this.statusBarHideTooltip
+      ? ''
+      : this.getFundTooltipText();
     this.fundBarItem.show();
     return this.fundBarItem;
   }
