@@ -2,7 +2,7 @@
   "name": "leeks-fund",
   "displayName": "割韭菜",
   "description": "韭菜盒子，VSCode 里也可以看股票 & 基金实时数据，做最好用的投资插件",
-  "version": "2.0.1",
+  "version": "2.0.5",
   "author": "giscafer <giscafer@outlook.com>",
   "repository": {
     "type": "git",
@@ -193,6 +193,10 @@
       {
         "command": "leek-fund.deleteStock",
         "title": "删除股票"
+      },
+      {
+        "command": "leek-fund.addStockToBar",
+        "title": "添加至状态栏"
       },
       {
         "command": "leek-fund.stockTrendPic",
@@ -402,6 +406,11 @@
           "group": "group5"
         },
         {
+          "command": "leek-fund.addStockToBar",
+          "when": "view == leekFundView.stock  && viewItem != category",
+          "group": "group6"
+        },
+        {
           "command": "leek-fund.deletePair",
           "when": "view == leekFundView.binance  && viewItem != category",
           "group": "group0"
@@ -441,7 +450,8 @@
             "hk00700",
             "usr_ixic",
             "usr_dji",
-            "usr_inx"
+            "usr_inx",
+            "ZC0"
           ],
           "description": "配置需要监控的股票代码（建议通过界面新增）"
         },
