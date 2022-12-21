@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.4](https://github.com/LeekHub/leek-fund/compare/v2.9.3...v2.9.4) (2022-11-10)
+
+### [2.9.3](https://github.com/LeekHub/leek-fund/compare/v2.9.2...v2.9.3) (2022-11-10)
+
+### [2.9.2](https://github.com/LeekHub/leek-fund/compare/v2.9.1...v2.9.2) (2022-11-10)
+
+
+### Bug Fixes
+
+* **forex:** 修复cheerio导入错误 ([ee924c1](https://github.com/LeekHub/leek-fund/commit/ee924c19d73493f705d66529068cf5f63ac09080))
+
+### [2.9.1](https://github.com/LeekHub/leek-fund/compare/v2.9.0...v2.9.1) (2022-11-10)
+
+## [2.9.0](https://github.com/LeekHub/leek-fund/compare/v2.8.2...v2.9.0) (2022-09-13)
+
+
+### Features
+
+* 更新基金数据 ([63a4dea](https://github.com/LeekHub/leek-fund/commit/63a4dea10ffcf259098b3e0b44a443e7e903ad2f))
+
+
+### Bug Fixes
+
+* **stock:** 修复深证指数面板显示bug ([c9572a2](https://github.com/LeekHub/leek-fund/commit/c9572a2419e63477a0ee571833680f37742c032a))
+
+### [2.8.2](https://github.com/LeekHub/leek-fund/compare/v2.8.0...v2.8.2) (2022-09-03)
+
+## [2.8.0](https://github.com/giscafer/leek-fund/compare/v2.7.3...v2.8.0) (2022-09-03)
+
+
+### Features
+
+* **forex:** 简单的外汇价格查看功能 ([e9b8ad9](https://github.com/giscafer/leek-fund/commit/e9b8ad9a0ac9a235813cf19b6c8accd29100a278))
+
+
+### Bug Fixes
+
+* **forex:** 降低 cheerio 版本以适应 typescript 3.8.3 ([25a6262](https://github.com/giscafer/leek-fund/commit/25a626231366730d05dcc73fdc854eb95ee2146b))
+
+### [2.7.3](https://github.com/giscafer/leek-fund/compare/v2.7.2...v2.7.3) (2022-08-04)
+
+
+### Bug Fixes
+
+* OUTPUT Flash News 开关提示 ([b2f4429](https://github.com/giscafer/leek-fund/commit/b2f44293e4410725222350b12b6ccf1de6b6586f))
+
+### [2.7.2](https://github.com/giscafer/leek-fund/compare/v2.7.1...v2.7.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* 修复编译目标版本过低导致的运行错误 ([bb73542](https://github.com/giscafer/leek-fund/commit/bb7354219fd606a091f1c5367d0805d551f07ab8))
+
+### [2.7.1](https://github.com/giscafer/leek-fund/compare/v2.7.0...v2.7.1) (2022-07-05)
+
+
+### Bug Fixes
+
+* 修复状态栏计算收益不准确的问题 ([7c0eaf6](https://github.com/giscafer/leek-fund/commit/7c0eaf68b04bc36ed2d054cb1fcfc9f42956fe8c))
+* **韭菜中心>数据中心:** 板块行情增加默认值，避免点击工具菜单出现无数据现象 ([c082271](https://github.com/giscafer/leek-fund/commit/c08227157b72905ddda49cdcbd64642b45f24f79))
+
+## [2.7.0](https://github.com/giscafer/leek-fund/compare/v2.6.0...v2.7.0) (2022-06-15)
+
+
+### Features
+
+* **stock:** 韭菜中心=>数据中心 增加板块行情 ([82ef71d](https://github.com/giscafer/leek-fund/commit/82ef71d74ff94cb7724faba7e6eb598732135b11))
+
 ## [2.6.0](https://github.com/giscafer/leek-fund/compare/v2.5.0...v2.6.0) (2022-05-06)
 
 

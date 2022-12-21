@@ -61,6 +61,7 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 - OUTPUT 面板支持选股宝异动快讯，金十资讯
 - 数据中心>牛熊风向标数据统计
 - 新增支持期货
+- 外汇牌价
 - 欢迎 PR [Github 源码](https://github.com/LeekHub/leek-fund)
 
 ## 安装使用
@@ -76,7 +77,7 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 
 ![概览](https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/overview.png)
 
-![韭菜中心](https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/leek-center.png)
+![韭菜中心](https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/600036.png)
 
 ## 插件设置
 
@@ -116,6 +117,7 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 - [sungongwei](https://github.com/sungongwei)
 - [gittig11](https://github.com/gittig11)
 - [James-chok](https://github.com/James-chok)
+- [ChouBaoDxs](https://github.com/ChouBaoDxs)
 
 <!-- <a href="https://github.com/giscafer/leek-fund/graphs/contributors">
   <img src="https://opencollective.com/leek-fund/contributors.svg?width=960&button=false" alt="contributors" />
@@ -139,6 +141,8 @@ src
 ├── explorer                    # 侧边栏核心代码
 │   ├── binanceProvider.ts      # 数字货币
 │   ├── binanceService.ts
+│   ├── forexProvider.ts        # 外汇
+│   ├── forexService.ts
 │   ├── fundProvider.ts         # 基金
 │   ├── fundService.ts
 │   ├── leekService.ts

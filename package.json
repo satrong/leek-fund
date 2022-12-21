@@ -2,27 +2,27 @@
   "name": "leeks-fund",
   "displayName": "割韭菜",
   "description": "韭菜盒子，VSCode 里也可以看股票 & 基金实时数据，做最好用的投资插件",
-  "version": "2.6.0",
+  "version": "2.9.4",
   "author": "giscafer <giscafer@outlook.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/giscafer/leek-fund.git"
+    "url": "https://github.com/LeekHub/leek-fund.git"
   },
   "license": "BSD-3-Clause",
   "keywords": [
     "stock",
-    "股票",
     "fund",
+    "LeekFund",
+    "股票",
     "基金",
     "韭菜基金",
     "韭菜盒子",
     "同花顺",
+    "东方财富",
     "天天基金",
     "蚂蚁财富",
     "数字货币",
-    "Binance",
-    "币安",
-    "vscode"
+    "Binance"
   ],
   "publisher": "giscafer",
   "icon": "resources/logo.png",
@@ -64,6 +64,11 @@
         {
           "id": "leekFundView.binance",
           "name": "Binance",
+          "visibility": "hidden"
+        },
+        {
+          "id": "leekFundView.forex",
+          "name": "Forex",
           "visibility": "hidden"
         },
         {
@@ -301,6 +306,14 @@
           "light": "resources/light/top.svg",
           "dark": "resources/dark/top.svg"
         }
+      },
+      {
+        "command": "leek-fund.refreshForex",
+        "title": "刷新数据",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
       }
     ],
     "menus": {
@@ -388,6 +401,11 @@
         {
           "command": "leek-fund.addBinancePair",
           "when": "view == leekFundView.binance",
+          "group": "navigation"
+        },
+        {
+          "command": "leek-fund.refreshForex",
+          "when": "view == leekFundView.forex",
           "group": "navigation"
         }
       ],
@@ -711,6 +729,10 @@
         "contents": "无数据，请检查网络或添加交易对"
       },
       {
+        "view": "leekFundView.forex",
+        "contents": "无数据，请检查网络"
+      },
+      {
         "view": "leekFundView.news",
         "contents": "无数据，请检查网络或添加关注用户"
       },
@@ -777,7 +799,9 @@
   "dependencies": {
     "amplitude": "^5.1.4",
     "axios": "^0.19.2",
+    "cheerio": "1.0.0-rc.6",
     "compare-versions": "^3.6.0",
+    "entities": "2.2.0",
     "iconv-lite": "^0.6.2",
     "lodash.clonedeep": "^4.5.0",
     "lodash.throttle": "^4.1.1",

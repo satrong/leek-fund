@@ -3,7 +3,7 @@ node_modules
 .vscode-test/
 *.vsix
 *.zip
-yarn.lock
+# yarn.lock
 package-lock.json
 demo/donate.html
 demo/api.html
@@ -13,3 +13,5 @@ yarn-error.log
 template/leek-center/build
 template-packages/leek-center/.eslintcache
 !template-packages/leek-center/yarn.lock
+
+.idea
