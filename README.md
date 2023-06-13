@@ -70,7 +70,7 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 
 ## 插件介绍
 
-- [韭菜盒子使用文档](https://github.com/LeekHub/leek-fund/issues/23)
+- [韭菜盒子使用文档](https://github.com/LeekHub/leek-fund/issues/371)
 - [VSCode 插件开发——韭菜盒子（图片如果展示不了可以看知乎的文章界面功能截图）](https://zhuanlan.zhihu.com/p/166683895)
 
 <!-- https://raw.staticdn.net/ 为GitHub raw 加速地址 -->
@@ -81,7 +81,7 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 
 ## 插件设置
 
-**添加/删除股票或基金时，建议使用新增按钮模糊搜索添加（支持名称和编码搜索）**，详细可查看 [韭菜盒子使用文档](https://github.com/LeekHub/leek-fund/issues/23)
+**添加/删除股票或基金时，建议使用新增按钮模糊搜索添加（支持名称和编码搜索）**，详细可查看 [韭菜盒子使用文档](https://github.com/LeekHub/leek-fund/issues/371)
 
 自定义配置在 **Settings** 视图下：
 
@@ -89,11 +89,17 @@ Leek box - Monitor the real-time data of stock & fund & future in VSCode, Be the
 
 ## 社区交流
 
-> 因恶意举报，不再提供官方群聊
+> 因恶意举报，不再提供微信官方群聊，可加电报群：https://t.me/+P1p3nJoqKR45MzQ1
 
 公众号：
 
-<img width="300" alt="微信公众号" src="https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/wechat-qr1.jpg">
+<img width="200" alt="微信公众号" src="https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/wechat-qr1.jpg">
+
+知识星球（赞助插件）：
+
+> PR 贡献开发者可以联系我邀请直接加入
+
+<img width="400" alt="知识星球（赞助插件）" src="https://raw.githubusercontents.com/LeekHub/leek-fund/master/screenshot/zhishixingqiu.jpeg">
 
 ## Core Contributors
 

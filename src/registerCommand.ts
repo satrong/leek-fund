@@ -378,7 +378,7 @@ export function registerViewEvent(
       });
       window
         .showQuickPick(stockNameList, {
-          placeHolder: '输入过滤选择，支持多选（限4个）',
+          placeHolder: '输入过滤选择，支持多选（限6个）',
           canPickMany: true,
         })
         .then((res) => {
@@ -386,8 +386,8 @@ export function registerViewEvent(
             res = [];
           }
           let codes = res.map((item) => item.description);
-          if (codes.length > 4) {
-            codes = codes.slice(0, 4);
+          if (codes.length > 6) {
+            codes = codes.slice(0, 6);
           }
           LeekFundConfig.updateStatusBarStockCfg(codes, () => {
             const handler = window.setStatusBarMessage(`下次数据刷新见效`);
@@ -405,18 +405,22 @@ export function registerViewEvent(
       window
         .showQuickPick(
           [
-            { label: '状态栏股票设置', description: 'statusbar-stock' },
-            { label: '状态栏股票涨📈的文字颜色', description: 'statusbar-rise' },
-            { label: '状态栏股票跌📉的文字颜色', description: 'statusbar-fall' },
-            { label: '基金&股票涨跌图标更换', description: 'icontype' },
-            { label: '👀显示/隐藏文本', description: 'hideText' },
+            { label: '📌 状态栏股票设置', description: 'statusbar-stock' },
+            { label: '📈 状态栏股票涨时文字颜色', description: 'statusbar-rise' },
+            { label: '📉 状态栏股票跌时文字颜色', description: 'statusbar-fall' },
+            { label: '🍖 涨跌图标更换', description: 'icontype' },
+            { label: '👀 显示/隐藏文本', description: 'hideText' },
             {
-              label: globalState.showEarnings ? '隐藏盈亏' : '👀显示盈亏',
+              label: globalState.showEarnings ? '隐藏盈亏' : '💰 显示盈亏',
               description: 'earnings',
             },
             {
-              label: globalState.remindSwitch ? '关闭提醒' : '🔔️打开提醒',
+              label: globalState.remindSwitch ? '⏱️ 关闭提醒' : '⏰ 打开提醒',
               description: 'remindSwitch',
+            },
+            {
+              label: globalState.kLineChartSwitch ? '🔛 切换为常规k线图' : '📴 切换为筹码分布K线图',
+              description: 'kLineChartSwitch',
             },
           ],
           {
@@ -505,6 +509,8 @@ export function registerViewEvent(
             commands.executeCommand('leek-fund.hideText');
           } else if (type === 'remindSwitch') {
             commands.executeCommand('leek-fund.toggleRemindSwitch');
+          }else if (type === 'kLineChartSwitch') {
+            commands.executeCommand('leek-fund.toggleKLineChartSwitch');
           }
         });
     })
@@ -524,6 +530,14 @@ export function registerViewEvent(
       const newValue = on !== undefined ? (on ? 1 : 0) : globalState.remindSwitch === 1 ? 0 : 1;
       LeekFundConfig.setConfig('leek-fund.stockRemindSwitch', newValue);
       globalState.remindSwitch = newValue;
+    })
+  );
+
+  context.subscriptions.push(
+    commands.registerCommand('leek-fund.toggleKLineChartSwitch', (on?: number) => {
+      const newValue = on !== undefined ? (on ? 1 : 0) : globalState.kLineChartSwitch === 1 ? 0 : 1;
+      LeekFundConfig.setConfig('leek-fund.stockKLineChartSwitch', newValue);
+      globalState.kLineChartSwitch = newValue;
     })
   );
 

@@ -2,7 +2,7 @@
   "name": "leeks-fund",
   "displayName": "割韭菜",
   "description": "韭菜盒子，VSCode 里也可以看股票 & 基金实时数据，做最好用的投资插件",
-  "version": "2.9.4",
+  "version": "3.3.0",
   "author": "giscafer <giscafer@outlook.com>",
   "repository": {
     "type": "git",
@@ -15,14 +15,10 @@
     "LeekFund",
     "股票",
     "基金",
-    "韭菜基金",
     "韭菜盒子",
     "同花顺",
     "东方财富",
-    "天天基金",
-    "蚂蚁财富",
-    "数字货币",
-    "Binance"
+    "天天基金"
   ],
   "publisher": "giscafer",
   "icon": "resources/logo.png",
@@ -34,7 +30,7 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -114,18 +110,12 @@
       {
         "command": "leek-fund.addFund",
         "title": "添加基金",
-        "icon": {
-          "light": "resources/light/add.svg",
-          "dark": "resources/dark/add.svg"
-        }
+        "icon": "$(add)"
       },
       {
         "command": "leek-fund.addFundGroup",
         "title": "添加分组",
-        "icon": {
-          "light": "resources/light/add-group.svg",
-          "dark": "resources/dark/add-group.svg"
-        }
+        "icon": "$(diff-added)"
       },
       {
         "command": "leek-fund.setFundAmount",
@@ -166,10 +156,7 @@
       {
         "command": "leek-fund.refreshFund",
         "title": "刷新数据",
-        "icon": {
-          "light": "resources/light/refresh.svg",
-          "dark": "resources/dark/refresh.svg"
-        }
+        "icon": "$(refresh)"
       },
       {
         "command": "leek-fund.sortStock",
@@ -182,26 +169,17 @@
       {
         "command": "leek-fund.addStock",
         "title": "添加股票",
-        "icon": {
-          "light": "resources/light/add.svg",
-          "dark": "resources/dark/add.svg"
-        }
+        "icon": "$(add)"
       },
       {
         "command": "leek-fund.leekCenterView",
         "title": "韭菜中心",
-        "icon": {
-          "light": "resources/light/remind.svg",
-          "dark": "resources/dark/remind.svg"
-        }
+        "icon": "$(home)"
       },
       {
         "command": "leek-fund.refreshStock",
         "title": "刷新数据",
-        "icon": {
-          "light": "resources/light/refresh.svg",
-          "dark": "resources/dark/refresh.svg"
-        }
+        "icon": "$(refresh)"
       },
       {
         "command": "leek-fund.setStockTop",
@@ -214,18 +192,12 @@
       {
         "command": "leek-fund.setStockUp",
         "title": "股票上移",
-        "icon": {
-          "light": "resources/light/up.svg",
-          "dark": "resources/dark/up.svg"
-        }
+        "icon": "$(arrow-up)"
       },
       {
         "command": "leek-fund.setStockDown",
         "title": "股票下移",
-        "icon": {
-          "light": "resources/light/down.svg",
-          "dark": "resources/dark/down.svg"
-        }
+        "icon": "$(arrow-down)"
       },
       {
         "command": "leek-fund.deleteStock",
@@ -250,10 +222,7 @@
       {
         "command": "leek-fund.refreshFollow",
         "title": "刷新关注列表",
-        "icon": {
-          "light": "resources/light/refresh.svg",
-          "dark": "resources/dark/refresh.svg"
-        }
+        "icon": "$(refresh)"
       },
       {
         "command": "leek-fund.toggleFlashNews",
@@ -266,10 +235,7 @@
       {
         "command": "leek-fund.addNews",
         "title": "添加关注雪球用户",
-        "icon": {
-          "light": "resources/light/add.svg",
-          "dark": "resources/dark/add.svg"
-        }
+        "icon": "$(add)"
       },
       {
         "command": "leek-fund.viewUserTimeline",
@@ -282,10 +248,7 @@
       {
         "command": "leek-fund.addBinancePair",
         "title": "添加交易对",
-        "icon": {
-          "light": "resources/light/add.svg",
-          "dark": "resources/dark/add.svg"
-        }
+        "icon": "$(add)"
       },
       {
         "command": "leek-fund.deletePair",
@@ -294,10 +257,7 @@
       {
         "command": "leek-fund.refreshBinance",
         "title": "刷新数据",
-        "icon": {
-          "light": "resources/light/refresh.svg",
-          "dark": "resources/dark/refresh.svg"
-        }
+        "icon": "$(refresh)"
       },
       {
         "command": "leek-fund.setPairTop",
@@ -310,10 +270,7 @@
       {
         "command": "leek-fund.refreshForex",
         "title": "刷新数据",
-        "icon": {
-          "light": "resources/light/refresh.svg",
-          "dark": "resources/dark/refresh.svg"
-        }
+        "icon": "$(refresh)"
       }
     ],
     "menus": {
@@ -536,8 +493,10 @@
             "usr_ixic",
             "usr_dji",
             "usr_inx",
-            "nf_ZC0",
+            "nf_IF0",
+            "nf_IH0",
             "nf_IC0",
+            "nf_IM0",
             "hf_OIL",
             "hf_CHA50CFD"
           ],
@@ -630,7 +589,8 @@
           "type": "array",
           "default": [
             "5124430882",
-            "1287305957"
+            "1287305957",
+            "1632326933"
           ],
           "description": "雪球用户id（进入雪球用户首页，复制/u/后的数字即可，比如 https://xueqiu.com/u/5124430882 链接的 5124430882）"
         },
@@ -668,6 +628,11 @@
           "type": "number",
           "default": 1,
           "description": "打开/关闭提醒（1打开，0关闭）"
+        },
+        "leek-fund.stockKLineChartSwitch": {
+          "type": "number",
+          "default": 0,
+          "description": "筹码分布K线图/常规k线图（1筹码分布K线图，0常规k线图）"
         },
         "leek-fund.labelFormat": {
           "type": "object",
@@ -738,7 +703,7 @@
       },
       {
         "view": "leekFundView.settings",
-        "contents": "\n [🏠️ 韭菜之家](command:leek-fund.leekCenterView) \n [🌈个性化设置](command:leek-fund.customSetting)\n[🛠打开配置页](command:leek-fund.openConfigPage)\n[💰打赏作者@giscafer](command:leek-fund.donate)\n 欢迎使用韭菜盒子^_^，[使用手册](https://github.com/giscafer/leek-fund/issues/23)；论坛[韭菜盒子社区](command:leek-fund.tucaoForum)，源码[Github](https://github.com/giscafer/leek-fund)，加群交流[微信群](https://github.com/giscafer/leek-fund/issues/19)， 电报群[Telegram](https://t.me/joinchat/VKxykRyeRNcibg7I-ykZMg)"
+        "contents": "\n [🏠️ 韭菜中心](command:leek-fund.leekCenterView) \n [🎨个性定制](command:leek-fund.customSetting)\n[💰赞助插件](command:leek-fund.donate)\n[📄使用文档](https://github.com/LeekHub/leek-fund/issues/371)\n[📚投资交流](https://github.com/LeekHub/leek-fund/issues/19)\n源码[Github](https://github.com/LeekHub/leek-fund)"
       }
     ]
   },

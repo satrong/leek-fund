@@ -40,7 +40,6 @@ let flashNewsOutputServer: FlashNewsOutputServer | null = null;
 let profitBar: ProfitStatusBar | null = null;
 
 export function activate(context: ExtensionContext) {
-  console.log('🐥Congratulations, your extension "leek-fund" is now active!');
 
   globalState.isDevelopment = process.env.NODE_ENV === 'development';
   globalState.context = context;
@@ -227,6 +226,8 @@ function setGlobalVariable() {
   globalState.showEarnings = LeekFundConfig.getConfig('leek-fund.showEarnings');
 
   globalState.remindSwitch = LeekFundConfig.getConfig('leek-fund.stockRemindSwitch');
+
+  globalState.kLineChartSwitch = LeekFundConfig.getConfig('leek-fund.stockKLineChartSwitch');
 
   globalState.labelFormat = LeekFundConfig.getConfig('leek-fund.labelFormat');
 
